@@ -1,7 +1,7 @@
 import os
 from distutils.core import setup
 
-packages = ['algos', 'struct']
+packages = ['algos', 'ds']
 
 setup(name='algos',
       version='0.1',
