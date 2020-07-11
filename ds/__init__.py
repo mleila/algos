@@ -1,1 +1,1 @@
-from basic import Node, LinkedList
+from .basic import Node, LinkedList
