@@ -1,6 +1,7 @@
 import unittest
 
 from ds import Node, LinkedList
+from algos.graph import AdjacencyList
 
 
 class TestLinkedList(unittest.TestCase):
@@ -34,6 +35,26 @@ class TestLinkedList(unittest.TestCase):
         ll.insert_node(Node(5))
         ll.insert_node(Node(7))
         assert ll.tolist() == [7, 5, 1]
+
+
+class TestAjacencyList(unittest.TestCase):
+
+    def __init__(self):
+        self.adjlist = AdjacencyList()
+
+    def test_dfs(self):
+        """Test Depth First Search Implementation."""
+        matrix = [
+            # 0  1  2  3  4  5
+            [0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0]
+        ]
+        self.adjlist.from_matrix(matrix)
+        assert adjlist.dfs() == [0, 1, 3, 5, 2, 4]
 
 
 if __name__ == '__main__':
