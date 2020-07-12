@@ -14,7 +14,7 @@ class Node:
 class LinkedList:
     """Singly Linked List."""
 
-    def __init__(self, head: Node):
+    def __init__(self, head: Node = None):
         self.head = head
         self.count = 0 if head is None else 1
 
