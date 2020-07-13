@@ -39,11 +39,9 @@ class TestLinkedList(unittest.TestCase):
 
 class TestAjacencyList(unittest.TestCase):
 
-    def __init__(self):
-        self.adjlist = AdjacencyList()
+    def test_from_matrix(self):
+        adjlist = AdjacencyList()
 
-    def test_dfs(self):
-        """Test Depth First Search Implementation."""
         matrix = [
             # 0  1  2  3  4  5
             [0, 1, 1, 0, 0, 0],
@@ -53,8 +51,54 @@ class TestAjacencyList(unittest.TestCase):
             [0, 0, 0, 0, 0, 1],
             [0, 0, 0, 0, 0, 0]
         ]
-        self.adjlist.from_matrix(matrix)
+        adjlist.from_matrix(matrix)
+
+    def test_dfs(self):
+        """Test Depth First Search Implementation."""
+        adjlist = AdjacencyList()
+
+        # case 1
+        matrix = [
+            # 0  1  2  3  4  5
+            [0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0]
+        ]
+        adjlist.from_matrix(matrix)
         assert adjlist.dfs() == [0, 1, 3, 5, 2, 4]
+
+        # case 2
+        matrix = [
+            # 0  1  2  3  4  5
+            [0, 1, 1, 0, 0, 1],
+            [0, 0, 0, 1, 0, 1],
+            [0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 0]
+        ]
+        adjlist.from_matrix(matrix)
+        assert adjlist.dfs() == [0, 1, 3, 2, 4, 5]
+
+    def test_bfs(self):
+        """"Test Breadth First Search Implementation."""
+        adjlist = AdjacencyList()
+
+        # case 1
+        matrix = [
+            # 0  1  2  3  4  5
+            [0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 0]
+        ]
+        adjlist.from_matrix(matrix)
+        assert adjlist.bfs() == [0, 2, 1, 4, 3, 5]
 
 
 if __name__ == '__main__':
