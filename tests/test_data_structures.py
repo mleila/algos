@@ -1,7 +1,7 @@
 import unittest
 
 from ds import Node, LinkedList
-from algos.graph import AdjacencyList
+from ds.graph import AdjacencyList, BinaryTree, Node as graphNode
 
 
 class TestLinkedList(unittest.TestCase):
@@ -99,6 +99,24 @@ class TestAjacencyList(unittest.TestCase):
         ]
         adjlist.from_matrix(matrix)
         assert adjlist.bfs() == [0, 2, 1, 4, 3, 5]
+
+
+class test_binary_tree(unittest.TestCase):
+
+    def test_add_node(self):
+        tree = BinaryTree(0)
+        nodes = [1, 2, 3, 4]
+        for n in nodes:
+            tree.add_node(n)
+
+    def test_inorder(self):
+        tree = BinaryTree(4)
+        nodes = [3, 2, 5]
+        for n in nodes:
+            tree.add_node(n)
+
+        in_order = [2, 3, 4, 5]
+        assert in_order == tree.inorder(tree.root)
 
 
 if __name__ == '__main__':
