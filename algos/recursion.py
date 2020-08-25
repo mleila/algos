@@ -59,3 +59,27 @@ def is_palindrome(string: str):
         return True
     first, last = string[0], string[-1]
     return (first == last) and is_palindrome(string[1:-1])
+
+
+def pascal_triangle(n: int):
+    """
+    Print pascal's triangle for n rows
+    """
+    def moving_sum(arr: list):
+        """moving sum sub-routine"""
+        n = len(arr)
+        if n <= 1:
+            return arr
+        out = []
+        for i in range(0, n-1):
+            out.append(arr[i]+arr[i+1])
+        return out
+
+    if n == 0:
+        row = [1]
+    if n == 1:
+        row = [1, 1]
+    else:
+        row = [1] + moving_sum(pascal_triangle(n-1)) + [1]
+    print(row)
+    return row
