@@ -14,9 +14,6 @@ class TestLinkedList(unittest.TestCase):
         s = 'abc'
         assert 'cba' == reverse_string(s)
 
-    def test_print_array(self):
-        print_array([1, 2, 3])
-
     def test_a_power_b(self):
         a = 6
         b = 3
@@ -38,6 +35,10 @@ class TestLinkedList(unittest.TestCase):
         assert 1 == compute_fibonnaci(n)
         n = 2
         assert 1 == compute_fibonnaci(n)
+
+    def test_pascal_triangle(self):
+        n = 5
+        res = pascal_triangle(n)
 
 
 if __name__ == '__main__':
